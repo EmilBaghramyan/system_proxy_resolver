@@ -137,12 +137,13 @@ class __$$_ProxyCopyWithImpl<$Res> extends _$ProxyCopyWithImpl<$Res, _$_Proxy>
 
 /// @nodoc
 
-class _$_Proxy implements _Proxy {
+class _$_Proxy extends _Proxy {
   const _$_Proxy(
       {required this.type,
       required this.host,
       required this.port,
-      this.credentials});
+      this.credentials})
+      : super._();
 
   @override
   final ProxyType type;
@@ -180,12 +181,13 @@ class _$_Proxy implements _Proxy {
       __$$_ProxyCopyWithImpl<_$_Proxy>(this, _$identity);
 }
 
-abstract class _Proxy implements Proxy {
+abstract class _Proxy extends Proxy {
   const factory _Proxy(
       {required final ProxyType type,
       required final String host,
       required final int port,
       final ProxyCredentials? credentials}) = _$_Proxy;
+  const _Proxy._() : super._();
 
   @override
   ProxyType get type;

@@ -12,4 +12,10 @@ class Proxy with _$Proxy {
     required int port,
     ProxyCredentials? credentials,
   }) = _Proxy;
+
+  const Proxy._();
+
+  factory Proxy.direct() => const Proxy(type: ProxyType.direct, host: "", port: 0);
+
+  bool get direct => type == ProxyType.direct;
 }

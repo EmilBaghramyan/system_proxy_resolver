@@ -230,7 +230,7 @@ class __$$_SystemProxySettingsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SystemProxySettings implements _SystemProxySettings {
+class _$_SystemProxySettings extends _SystemProxySettings {
   const _$_SystemProxySettings(
       {required this.autoDiscoveryEnabled,
       this.autoConfigUrl,
@@ -240,7 +240,8 @@ class _$_SystemProxySettings implements _SystemProxySettings {
       required this.socksProxy,
       required final List<String> bypassHostnames,
       required this.bypassSimpleHostnames})
-      : _bypassHostnames = bypassHostnames;
+      : _bypassHostnames = bypassHostnames,
+        super._();
 
   @override
   final bool autoDiscoveryEnabled;
@@ -312,7 +313,7 @@ class _$_SystemProxySettings implements _SystemProxySettings {
           this, _$identity);
 }
 
-abstract class _SystemProxySettings implements SystemProxySettings {
+abstract class _SystemProxySettings extends SystemProxySettings {
   const factory _SystemProxySettings(
       {required final bool autoDiscoveryEnabled,
       final String? autoConfigUrl,
@@ -322,6 +323,7 @@ abstract class _SystemProxySettings implements SystemProxySettings {
       required final Proxy socksProxy,
       required final List<String> bypassHostnames,
       required final bool bypassSimpleHostnames}) = _$_SystemProxySettings;
+  const _SystemProxySettings._() : super._();
 
   @override
   bool get autoDiscoveryEnabled;

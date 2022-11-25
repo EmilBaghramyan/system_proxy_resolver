@@ -15,4 +15,9 @@ class SystemProxySettings with _$SystemProxySettings {
     required List<String> bypassHostnames,
     required bool bypassSimpleHostnames,
   }) = _SystemProxySettings;
+
+  const SystemProxySettings._();
+
+  bool get hasAtLeastOneNonDirectProxy =>
+      !httpProxy.direct || !httpsProxy.direct || !ftpProxy.direct || !socksProxy.direct;
 }
