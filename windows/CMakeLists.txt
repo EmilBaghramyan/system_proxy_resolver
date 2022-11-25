@@ -30,10 +30,6 @@ add_library(${PROJECT_NAME} SHARED
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Winhttp.lib)
 target_compile_definitions(${PROJECT_NAME} PUBLIC DART_SHARED_LIB)
-target_include_directories(${PROJECT_NAME} INTERFACE
-  ../src/
-  ../third_party/dart-sdk/src/runtime/include/
-)
 include_directories(INTERFACE
   ../src/
   ../third_party/dart-sdk/src/runtime/include/

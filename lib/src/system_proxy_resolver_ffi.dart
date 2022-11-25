@@ -46,6 +46,8 @@ class FfiSystemProxyResolver extends SystemProxyResolverPlatform {
         autoConfigUrl: ffiResult.autoConfigUrl == nullptr ? null : ffiResult.autoConfigUrl.cast<Utf8>().toDartString(),
         httpProxy: _ffiProxyToProxy(ffiResult.httpProxy),
         httpsProxy: _ffiProxyToProxy(ffiResult.httpsProxy),
+        ftpProxy: _ffiProxyToProxy(ffiResult.ftpProxy),
+        socksProxy: _ffiProxyToProxy(ffiResult.socksProxy),
         bypassHostnames: List.generate(ffiResult.bypassHostnamesLength, (index) {
           final cStr = ffiResult.bypassHostnames[index].cast<Utf8>();
           return cStr.toDartString();

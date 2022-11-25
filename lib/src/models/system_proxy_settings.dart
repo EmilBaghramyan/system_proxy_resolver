@@ -8,8 +8,10 @@ class SystemProxySettings with _$SystemProxySettings {
   const factory SystemProxySettings({
     required bool autoDiscoveryEnabled,
     String? autoConfigUrl,
-    Proxy? httpProxy,
-    Proxy? httpsProxy,
+    required Proxy httpProxy,
+    required Proxy httpsProxy,
+    required Proxy ftpProxy,
+    required Proxy socksProxy,
     required List<String> bypassHostnames,
     required bool bypassSimpleHostnames,
   }) = _SystemProxySettings;

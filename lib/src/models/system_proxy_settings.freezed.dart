@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SystemProxySettings {
   bool get autoDiscoveryEnabled => throw _privateConstructorUsedError;
   String? get autoConfigUrl => throw _privateConstructorUsedError;
-  Proxy? get httpProxy => throw _privateConstructorUsedError;
-  Proxy? get httpsProxy => throw _privateConstructorUsedError;
+  Proxy get httpProxy => throw _privateConstructorUsedError;
+  Proxy get httpsProxy => throw _privateConstructorUsedError;
+  Proxy get ftpProxy => throw _privateConstructorUsedError;
+  Proxy get socksProxy => throw _privateConstructorUsedError;
   List<String> get bypassHostnames => throw _privateConstructorUsedError;
   bool get bypassSimpleHostnames => throw _privateConstructorUsedError;
 
@@ -37,13 +39,17 @@ abstract class $SystemProxySettingsCopyWith<$Res> {
   $Res call(
       {bool autoDiscoveryEnabled,
       String? autoConfigUrl,
-      Proxy? httpProxy,
-      Proxy? httpsProxy,
+      Proxy httpProxy,
+      Proxy httpsProxy,
+      Proxy ftpProxy,
+      Proxy socksProxy,
       List<String> bypassHostnames,
       bool bypassSimpleHostnames});
 
-  $ProxyCopyWith<$Res>? get httpProxy;
-  $ProxyCopyWith<$Res>? get httpsProxy;
+  $ProxyCopyWith<$Res> get httpProxy;
+  $ProxyCopyWith<$Res> get httpsProxy;
+  $ProxyCopyWith<$Res> get ftpProxy;
+  $ProxyCopyWith<$Res> get socksProxy;
 }
 
 /// @nodoc
@@ -61,8 +67,10 @@ class _$SystemProxySettingsCopyWithImpl<$Res, $Val extends SystemProxySettings>
   $Res call({
     Object? autoDiscoveryEnabled = null,
     Object? autoConfigUrl = freezed,
-    Object? httpProxy = freezed,
-    Object? httpsProxy = freezed,
+    Object? httpProxy = null,
+    Object? httpsProxy = null,
+    Object? ftpProxy = null,
+    Object? socksProxy = null,
     Object? bypassHostnames = null,
     Object? bypassSimpleHostnames = null,
   }) {
@@ -75,14 +83,22 @@ class _$SystemProxySettingsCopyWithImpl<$Res, $Val extends SystemProxySettings>
           ? _value.autoConfigUrl
           : autoConfigUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      httpProxy: freezed == httpProxy
+      httpProxy: null == httpProxy
           ? _value.httpProxy
           : httpProxy // ignore: cast_nullable_to_non_nullable
-              as Proxy?,
-      httpsProxy: freezed == httpsProxy
+              as Proxy,
+      httpsProxy: null == httpsProxy
           ? _value.httpsProxy
           : httpsProxy // ignore: cast_nullable_to_non_nullable
-              as Proxy?,
+              as Proxy,
+      ftpProxy: null == ftpProxy
+          ? _value.ftpProxy
+          : ftpProxy // ignore: cast_nullable_to_non_nullable
+              as Proxy,
+      socksProxy: null == socksProxy
+          ? _value.socksProxy
+          : socksProxy // ignore: cast_nullable_to_non_nullable
+              as Proxy,
       bypassHostnames: null == bypassHostnames
           ? _value.bypassHostnames
           : bypassHostnames // ignore: cast_nullable_to_non_nullable
@@ -96,25 +112,33 @@ class _$SystemProxySettingsCopyWithImpl<$Res, $Val extends SystemProxySettings>
 
   @override
   @pragma('vm:prefer-inline')
-  $ProxyCopyWith<$Res>? get httpProxy {
-    if (_value.httpProxy == null) {
-      return null;
-    }
-
-    return $ProxyCopyWith<$Res>(_value.httpProxy!, (value) {
+  $ProxyCopyWith<$Res> get httpProxy {
+    return $ProxyCopyWith<$Res>(_value.httpProxy, (value) {
       return _then(_value.copyWith(httpProxy: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ProxyCopyWith<$Res>? get httpsProxy {
-    if (_value.httpsProxy == null) {
-      return null;
-    }
-
-    return $ProxyCopyWith<$Res>(_value.httpsProxy!, (value) {
+  $ProxyCopyWith<$Res> get httpsProxy {
+    return $ProxyCopyWith<$Res>(_value.httpsProxy, (value) {
       return _then(_value.copyWith(httpsProxy: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProxyCopyWith<$Res> get ftpProxy {
+    return $ProxyCopyWith<$Res>(_value.ftpProxy, (value) {
+      return _then(_value.copyWith(ftpProxy: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProxyCopyWith<$Res> get socksProxy {
+    return $ProxyCopyWith<$Res>(_value.socksProxy, (value) {
+      return _then(_value.copyWith(socksProxy: value) as $Val);
     });
   }
 }
@@ -130,15 +154,21 @@ abstract class _$$_SystemProxySettingsCopyWith<$Res>
   $Res call(
       {bool autoDiscoveryEnabled,
       String? autoConfigUrl,
-      Proxy? httpProxy,
-      Proxy? httpsProxy,
+      Proxy httpProxy,
+      Proxy httpsProxy,
+      Proxy ftpProxy,
+      Proxy socksProxy,
       List<String> bypassHostnames,
       bool bypassSimpleHostnames});
 
   @override
-  $ProxyCopyWith<$Res>? get httpProxy;
+  $ProxyCopyWith<$Res> get httpProxy;
   @override
-  $ProxyCopyWith<$Res>? get httpsProxy;
+  $ProxyCopyWith<$Res> get httpsProxy;
+  @override
+  $ProxyCopyWith<$Res> get ftpProxy;
+  @override
+  $ProxyCopyWith<$Res> get socksProxy;
 }
 
 /// @nodoc
@@ -154,8 +184,10 @@ class __$$_SystemProxySettingsCopyWithImpl<$Res>
   $Res call({
     Object? autoDiscoveryEnabled = null,
     Object? autoConfigUrl = freezed,
-    Object? httpProxy = freezed,
-    Object? httpsProxy = freezed,
+    Object? httpProxy = null,
+    Object? httpsProxy = null,
+    Object? ftpProxy = null,
+    Object? socksProxy = null,
     Object? bypassHostnames = null,
     Object? bypassSimpleHostnames = null,
   }) {
@@ -168,14 +200,22 @@ class __$$_SystemProxySettingsCopyWithImpl<$Res>
           ? _value.autoConfigUrl
           : autoConfigUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      httpProxy: freezed == httpProxy
+      httpProxy: null == httpProxy
           ? _value.httpProxy
           : httpProxy // ignore: cast_nullable_to_non_nullable
-              as Proxy?,
-      httpsProxy: freezed == httpsProxy
+              as Proxy,
+      httpsProxy: null == httpsProxy
           ? _value.httpsProxy
           : httpsProxy // ignore: cast_nullable_to_non_nullable
-              as Proxy?,
+              as Proxy,
+      ftpProxy: null == ftpProxy
+          ? _value.ftpProxy
+          : ftpProxy // ignore: cast_nullable_to_non_nullable
+              as Proxy,
+      socksProxy: null == socksProxy
+          ? _value.socksProxy
+          : socksProxy // ignore: cast_nullable_to_non_nullable
+              as Proxy,
       bypassHostnames: null == bypassHostnames
           ? _value._bypassHostnames
           : bypassHostnames // ignore: cast_nullable_to_non_nullable
@@ -194,8 +234,10 @@ class _$_SystemProxySettings implements _SystemProxySettings {
   const _$_SystemProxySettings(
       {required this.autoDiscoveryEnabled,
       this.autoConfigUrl,
-      this.httpProxy,
-      this.httpsProxy,
+      required this.httpProxy,
+      required this.httpsProxy,
+      required this.ftpProxy,
+      required this.socksProxy,
       required final List<String> bypassHostnames,
       required this.bypassSimpleHostnames})
       : _bypassHostnames = bypassHostnames;
@@ -205,9 +247,13 @@ class _$_SystemProxySettings implements _SystemProxySettings {
   @override
   final String? autoConfigUrl;
   @override
-  final Proxy? httpProxy;
+  final Proxy httpProxy;
   @override
-  final Proxy? httpsProxy;
+  final Proxy httpsProxy;
+  @override
+  final Proxy ftpProxy;
+  @override
+  final Proxy socksProxy;
   final List<String> _bypassHostnames;
   @override
   List<String> get bypassHostnames {
@@ -220,7 +266,7 @@ class _$_SystemProxySettings implements _SystemProxySettings {
 
   @override
   String toString() {
-    return 'SystemProxySettings(autoDiscoveryEnabled: $autoDiscoveryEnabled, autoConfigUrl: $autoConfigUrl, httpProxy: $httpProxy, httpsProxy: $httpsProxy, bypassHostnames: $bypassHostnames, bypassSimpleHostnames: $bypassSimpleHostnames)';
+    return 'SystemProxySettings(autoDiscoveryEnabled: $autoDiscoveryEnabled, autoConfigUrl: $autoConfigUrl, httpProxy: $httpProxy, httpsProxy: $httpsProxy, ftpProxy: $ftpProxy, socksProxy: $socksProxy, bypassHostnames: $bypassHostnames, bypassSimpleHostnames: $bypassSimpleHostnames)';
   }
 
   @override
@@ -236,6 +282,10 @@ class _$_SystemProxySettings implements _SystemProxySettings {
                 other.httpProxy == httpProxy) &&
             (identical(other.httpsProxy, httpsProxy) ||
                 other.httpsProxy == httpsProxy) &&
+            (identical(other.ftpProxy, ftpProxy) ||
+                other.ftpProxy == ftpProxy) &&
+            (identical(other.socksProxy, socksProxy) ||
+                other.socksProxy == socksProxy) &&
             const DeepCollectionEquality()
                 .equals(other._bypassHostnames, _bypassHostnames) &&
             (identical(other.bypassSimpleHostnames, bypassSimpleHostnames) ||
@@ -249,6 +299,8 @@ class _$_SystemProxySettings implements _SystemProxySettings {
       autoConfigUrl,
       httpProxy,
       httpsProxy,
+      ftpProxy,
+      socksProxy,
       const DeepCollectionEquality().hash(_bypassHostnames),
       bypassSimpleHostnames);
 
@@ -264,8 +316,10 @@ abstract class _SystemProxySettings implements SystemProxySettings {
   const factory _SystemProxySettings(
       {required final bool autoDiscoveryEnabled,
       final String? autoConfigUrl,
-      final Proxy? httpProxy,
-      final Proxy? httpsProxy,
+      required final Proxy httpProxy,
+      required final Proxy httpsProxy,
+      required final Proxy ftpProxy,
+      required final Proxy socksProxy,
       required final List<String> bypassHostnames,
       required final bool bypassSimpleHostnames}) = _$_SystemProxySettings;
 
@@ -274,9 +328,13 @@ abstract class _SystemProxySettings implements SystemProxySettings {
   @override
   String? get autoConfigUrl;
   @override
-  Proxy? get httpProxy;
+  Proxy get httpProxy;
   @override
-  Proxy? get httpsProxy;
+  Proxy get httpsProxy;
+  @override
+  Proxy get ftpProxy;
+  @override
+  Proxy get socksProxy;
   @override
   List<String> get bypassHostnames;
   @override
