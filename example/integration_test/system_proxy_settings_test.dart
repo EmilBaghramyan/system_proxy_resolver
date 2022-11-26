@@ -22,7 +22,7 @@ void main() {
     );
     helper.setSystemProxySettings(settings);
 
-    expect(() => plugin.getSystemProxySettings(), equals(settings));
+    expect(plugin.getSystemProxySettings(), equals(settings));
   });
 
   testWidgets("can read `one proxy for all protocols` correctly", (_) async {
