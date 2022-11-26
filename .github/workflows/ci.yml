@@ -12,23 +12,23 @@ jobs:
       fail-fast: false
       matrix:
 #        platform: [ios, macos, android, windows, linux]
-        platform: [macos]
+        platform: [windows]
         include:
-          - platform: ios
-            os: macos-latest
-            desktop: false
-          - platform: macos
-            os: macos-latest
-            desktop: true
-          - platform: android
-            os: macos-latest
-            desktop: false
+#          - platform: ios
+#            os: macos-latest
+#            desktop: false
+#          - platform: macos
+#            os: macos-latest
+#            desktop: true
+#          - platform: android
+#            os: macos-latest
+#            desktop: false
           - platform: windows
             os: windows-latest
             desktop: true
-          - platform: linux
-            os: ubuntu-latest
-            desktop: true
+#          - platform: linux
+#            os: ubuntu-latest
+#            desktop: true
 
     runs-on: ${{ matrix.os }}
     steps:
