@@ -12,14 +12,14 @@ jobs:
       fail-fast: false
       matrix:
 #        platform: [ios, macos, android, windows, linux]
-        platform: [windows]
+        platform: [macos, windows]
         include:
 #          - platform: ios
 #            os: macos-latest
 #            desktop: false
-#          - platform: macos
-#            os: macos-latest
-#            desktop: true
+          - platform: macos
+            os: macos-latest
+            desktop: true
 #          - platform: android
 #            os: macos-latest
 #            desktop: false
@@ -44,13 +44,6 @@ jobs:
         with:
           model: 'iPhone 8'
 
-      ## macOS, Windows and Linux integration
-      - name: Enable desktop support
-        if: ${{ matrix.desktop }}
-        run: |
-          flutter config --enable-windows-desktop
-          flutter config --enable-macos-desktop
-          flutter config --enable-linux-desktop
       ## Linux integration
       - name: Install Linux dependencies
         if: ${{ matrix.platform == 'linux' }}

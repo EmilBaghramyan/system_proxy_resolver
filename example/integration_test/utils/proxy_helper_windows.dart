@@ -1,36 +1,7 @@
-import 'dart:io';
-
 import 'package:system_proxy_resolver/system_proxy_resolver.dart';
 import 'package:win32_registry/win32_registry.dart';
 
-abstract class ProxyHelper {
-  const ProxyHelper();
-
-  factory ProxyHelper.platform() {
-    if (Platform.isWindows) {
-      return WindowsProxyHelper();
-    } else {
-      throw UnsupportedError('Unknown platform: ${Platform.operatingSystem}');
-    }
-  }
-
-  void setSystemProxySettings(SystemProxySettings settings);
-
-  void resetSystemProxySettings() {
-    final settings = SystemProxySettings(
-      autoDiscoveryEnabled: false,
-      httpProxy: Proxy.direct(),
-      httpsProxy: Proxy.direct(),
-      ftpProxy: Proxy.direct(),
-      socksProxy: Proxy.direct(),
-      bypassHostnames: [],
-      bypassSimpleHostnames: false,
-    );
-    setSystemProxySettings(settings);
-  }
-
-  void setProxyForAllProtocols(String host, int port);
-}
+import 'proxy_helper.dart';
 
 class WindowsProxyHelper extends ProxyHelper {
   static const _registryPath = r"Software\Microsoft\Windows\CurrentVersion\Internet Settings";
@@ -44,6 +15,9 @@ class WindowsProxyHelper extends ProxyHelper {
   @override
   void setSystemProxySettings(SystemProxySettings settings) {
     _useRegistry((registry) {
+      Registry.openPath(RegistryHive.currentUser,
+              path: "$_registryPath\\Connections", desiredAccessRights: AccessRights.allAccess)
+          .deleteValue("DefaultConnectionSettings");
       registry
           .createValue(RegistryValue(_autoDetectKey, RegistryValueType.int32, settings.autoDiscoveryEnabled ? 1 : 0));
 

@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:system_proxy_resolver/system_proxy_resolver.dart';
 
-import 'proxy_helper.dart';
+import 'utils/proxy_helper.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,7 @@ void main() {
     );
     helper.setSystemProxySettings(settings);
 
-    expect(plugin.getSystemProxySettings(), equals(settings));
+    expect(plugin.getSystemProxySettings(), helper.match(settings));
   });
 
   testWidgets("can read `one proxy for all protocols` correctly", (_) async {

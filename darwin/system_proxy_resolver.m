@@ -79,7 +79,7 @@ GetSystemProxySettingsResult *getSystemProxySettings() {
     result->value.success.httpProxy.port = httpPort;
   }
   if (httpsEnable) {
-    result->value.success.httpProxy.type = ProxyType_Https;
+    result->value.success.httpsProxy.type = ProxyType_Https;
     result->value.success.httpsProxy.host = NSStringToCString(httpsHost);
     result->value.success.httpsProxy.port = httpsPort;
   }
