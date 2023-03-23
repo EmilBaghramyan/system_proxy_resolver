@@ -1,0 +1,91 @@
+# Run with `flutter pub run ffigen --config ffigen.yaml`.
+name: CoreFoundationBindings
+description: |
+  Bindings for `CFNetwork/CFProxySupport.h`.
+
+  Regenerate bindings with `flutter pub run ffigen --config ffigen.yaml`.
+output: 'lib/src/core_foundation.g.dart'
+headers:
+  entry-points:
+    - 'src/system_proxy_resolver_foundation.h'
+    - 'src/dart-sdk/runtime/include/dart_native_api.h'
+    - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFProxySupport.h'
+exclude-all-by-default: true
+preamble: |
+  // ignore_for_file: always_specify_types
+  // ignore_for_file: camel_case_types
+  // ignore_for_file: non_constant_identifier_names
+  export 'core_foundation_shims.dart';
+comments:
+  style: any
+  length: full
+functions:
+  include:
+    # Common
+    - CFRetain
+    - CFRelease
+    - CFGetRetainCount
+    - CFCopyDescription
+    - CFGetTypeID
+    - CFEqual
+    # CFString
+    - CFStringGetTypeID
+    - CFStringCreateWithBytes
+    - CFStringGetBytes
+    - CFStringGetLength
+    # CFArray
+    - CFArrayGetTypeID
+    - CFArrayGetCount
+    - CFArrayGetValueAtIndex
+    # CFDictionary
+    - CFDictionaryGetTypeID
+    - CFDictionaryGetValue
+    # CFNumber
+    - CFNumberGetTypeID
+    - CFNumberGetValue
+    # CFBoolean
+    - CFBooleanGetTypeID
+    - CFBooleanGetValue
+    # CFURL
+    - CFURLCreateWithString
+    # CFRunLoop
+    - CFRunLoopGetCurrent
+    - CFRunLoopAddSource
+    - CFRunLoopRunInMode
+    # CFNetwork
+    - CFNetworkCopySystemProxySettings
+    - CFNetworkCopyProxiesForURL
+    - CFNetworkExecuteProxyAutoConfigurationURL
+structs:
+  include:
+    - CFProxyAutoConfigurationResult
+    - _Dart_CObject
+  rename:
+    '__CF(.*)': 'CF$1'
+    _Dart_CObject: Dart_CObject
+unnamed-enums:
+  include:
+    - 'kCFStringEncoding.*'
+    - 'kCFNumber.*Type'
+globals:
+  include:
+    - kCFAllocatorDefault
+    - 'kCFNetworkProxies.*'
+    - 'kCFProxy.*Key'
+    - 'kCFProxyType.*'
+    - kCFRunLoopDefaultMode
+typedefs:
+  include:
+    - CFProxyAutoConfigurationResultCallback
+library-imports:
+  shims: 'core_foundation_shims.dart'
+type-map:
+  typedefs:
+    Boolean:
+      lib: ffi
+      c-type: Bool
+      dart-type: bool
+    CFTypeRef:
+      lib: shims
+      c-type: CFTypeRef
+      dart-type: CFTypeRef

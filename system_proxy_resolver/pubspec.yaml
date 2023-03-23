@@ -1,0 +1,34 @@
+name: system_proxy_resolver
+description: A starting point for Dart libraries or applications.
+homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver
+issue_tracker: https://github.com/ky1vstar/system_proxy_resolver/issues
+version: 0.0.1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=2.11.0"
+
+flutter:
+  plugin:
+    platforms:
+      ios:
+        default_package: system_proxy_resolver_foundation
+      macos:
+        default_package: system_proxy_resolver_foundation
+
+dependencies:
+  flutter:
+    sdk: flutter
+  system_proxy_resolver_foundation: ^0.0.1
+  system_proxy_resolver_platform_interface: ^0.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lint: ^2.0.1
+
+dependency_overrides:
+  system_proxy_resolver_foundation:
+    path: ../system_proxy_resolver_foundation
+  system_proxy_resolver_platform_interface:
+    path: ../system_proxy_resolver_platform_interface

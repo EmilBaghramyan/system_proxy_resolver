@@ -1,0 +1,23 @@
+name: system_proxy_resolver_platform_interface
+description: A starting point for Dart libraries or applications.
+homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver_platform_interface
+issue_tracker: https://github.com/ky1vstar/system_proxy_resolver/issues
+version: 0.0.1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=2.11.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  freezed_annotation: ^2.0.0
+  plugin_platform_interface: ^2.1.0
+
+dev_dependencies:
+  build_runner: ^2.3.3
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.3.2
+  lint: ^2.0.1
+  mockito: ^5.0.0
