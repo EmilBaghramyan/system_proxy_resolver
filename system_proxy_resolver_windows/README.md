@@ -1,6 +1,6 @@
-# system\_proxy\_resolver\_foundation
+# system\_proxy\_resolver\_windows
 
-The iOS and macOS implementation of [`system_proxy_resolver`][1].
+The Windows implementation of [`system_proxy_resolver`][1].
 
 ## Usage
 

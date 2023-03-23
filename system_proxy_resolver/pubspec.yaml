@@ -15,12 +15,15 @@ flutter:
         default_package: system_proxy_resolver_foundation
       macos:
         default_package: system_proxy_resolver_foundation
+      windows:
+        default_package: system_proxy_resolver_windows
 
 dependencies:
   flutter:
     sdk: flutter
   system_proxy_resolver_foundation: ^0.0.1
   system_proxy_resolver_platform_interface: ^0.0.1
+  system_proxy_resolver_windows: ^0.0.1
 
 dev_dependencies:
   flutter_test:
@@ -32,3 +35,5 @@ dependency_overrides:
     path: ../system_proxy_resolver_foundation
   system_proxy_resolver_platform_interface:
     path: ../system_proxy_resolver_platform_interface
+  system_proxy_resolver_windows:
+    path: ../system_proxy_resolver_windows

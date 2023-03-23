@@ -25,6 +25,8 @@ dependency_overrides:
     path: ../../system_proxy_resolver_foundation
   system_proxy_resolver_platform_interface:
     path: ../../system_proxy_resolver_platform_interface
+  system_proxy_resolver_windows:
+    path: ../../system_proxy_resolver_windows
 
 flutter:
   uses-material-design: true

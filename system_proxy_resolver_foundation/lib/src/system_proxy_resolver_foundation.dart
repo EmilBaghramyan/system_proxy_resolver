@@ -12,7 +12,7 @@ import 'package:system_proxy_resolver_platform_interface/system_proxy_resolver_p
 
 class SystemProxyResolverFoundation extends SystemProxyResolverPlatform {
   /// Registers this class as the default instance of
-  /// [SharedPreferencesStorePlatform].
+  /// [SystemProxyResolverPlatform].
   static void registerWith() {
     SystemProxyResolverPlatform.instance = SystemProxyResolverFoundation();
   }

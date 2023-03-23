@@ -1,0 +1,39 @@
+# Run with `flutter pub run ffigen --config ffigen.yaml`.
+name: WinHttpBindings
+description: |
+  Bindings for `Winhttp.h`.
+
+  Regenerate bindings with `flutter pub run ffigen --config ffigen.yaml`.
+output: 'lib/src/winhttp.g.dart'
+headers:
+  entry-points:
+    # Modify this file by adding `#include <windows.h>` before `#include <winapifamily.h>`
+    - 'C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\winhttp.h'
+exclude-all-by-default: true
+preamble: |
+  // ignore_for_file: type=lint
+comments:
+  style: any
+  length: full
+functions:
+  include:
+    - WinHttpGetIEProxyConfigForCurrentUser
+    - WinHttpOpen
+    - WinHttpCreateProxyResolver
+    - WinHttpSetStatusCallback
+    - WinHttpGetProxyForUrlEx
+structs:
+  rename:
+    '_(.*)': '$1'
+typedefs:
+  include:
+    - HINTERNET
+macros:
+  include:
+    - 'WINHTTP_.*'
+type-map:
+  typedefs:
+    BOOL:
+      lib: ffi
+      c-type: Bool
+      dart-type: bool

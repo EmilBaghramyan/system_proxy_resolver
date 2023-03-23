@@ -1,6 +1,6 @@
-name: system_proxy_resolver_foundation
-description: iOS and macOS implementation of the system_proxy_resolver plugin.
-homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver_foundation
+name: system_proxy_resolver_windows
+description: Windows implementation of the system_proxy_resolver plugin.
+homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver_windows
 issue_tracker: https://github.com/ky1vstar/system_proxy_resolver/issues
 version: 0.0.1
 
@@ -12,20 +12,16 @@ flutter:
   plugin:
     implements: system_proxy_resolver
     platforms:
-      ios:
+      windows:
         ffiPlugin: true
-        dartPluginClass: SystemProxyResolverFoundation
-        sharedDarwinSource: true
-      macos:
-        ffiPlugin: true
-        dartPluginClass: SystemProxyResolverFoundation
-        sharedDarwinSource: true
+        dartPluginClass: SystemProxyResolverWindows
 
 dependencies:
   ffi: ^2.0.1
   flutter:
     sdk: flutter
   system_proxy_resolver_platform_interface: ^0.0.1
+  win32: ^4.1.1
 
 dev_dependencies:
   ffigen: ^7.2.9
