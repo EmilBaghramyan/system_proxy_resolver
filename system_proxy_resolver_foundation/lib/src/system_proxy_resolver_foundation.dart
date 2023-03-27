@@ -105,10 +105,10 @@ class SystemProxyResolverFoundation extends SystemProxyResolverPlatform {
   }
 
   @override
-  Future<List<Proxy>> getProxyForUrl(String url) async {
+  Future<List<Proxy>> getProxyForUrl(Uri url) async {
     final releaseList = <CFTypeRef>[];
     try {
-      final cfUrlString = url.toCFString();
+      final cfUrlString = url.toString().toCFString();
       releaseList.add(cfUrlString.cast());
 
       final cfUrl = cfLib.CFURLCreateWithString(cfLib.kCFAllocatorDefault, cfUrlString, nullptr);

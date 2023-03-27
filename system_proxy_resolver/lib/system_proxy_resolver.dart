@@ -15,7 +15,7 @@ class SystemProxyResolver {
     return SystemProxyResolverPlatform.instance.getSystemProxySettings();
   }
 
-  Future<List<Proxy>> getProxyForUrl(String url) {
+  Future<List<Proxy>> getProxyForUrl(Uri url) {
     return SystemProxyResolverPlatform.instance.getProxyForUrl(url);
   }
 }

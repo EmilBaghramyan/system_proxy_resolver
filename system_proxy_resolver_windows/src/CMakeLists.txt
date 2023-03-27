@@ -14,4 +14,9 @@ set_target_properties(system_proxy_resolver_windows PROPERTIES
   OUTPUT_NAME "system_proxy_resolver_windows"
 )
 
+include_directories(INTERFACE
+  dart-sdk/runtime/include/
+)
+
+target_link_libraries(system_proxy_resolver_windows PRIVATE Winhttp.lib)
 target_compile_definitions(system_proxy_resolver_windows PUBLIC DART_SHARED_LIB)

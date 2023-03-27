@@ -157,7 +157,7 @@ class _ProxyForUrlPageState extends State<ProxyForUrlPage> {
     });
 
     try {
-      final url = _controller.text.trim();
+      final url = Uri.parse(_controller.text.trim());
       final response = await _systemProxyResolverPlugin.getProxyForUrl(url).then((v) => v.toString());
       if (mounted) {
         setState(() {

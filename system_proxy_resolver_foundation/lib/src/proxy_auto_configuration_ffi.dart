@@ -31,10 +31,14 @@ void _proxyAutoConfigurationResultCallback(Pointer<Void> client, Pointer<CFArray
   final cObject = malloc<Dart_CObject>()
     ..ref.type = Dart_CObject_Type.Dart_CObject_kInt64
     ..ref.value.as_int64 = result.address;
-  final sendPort = client.address;
-  if (_postCObject(sendPort, cObject) > 0) {
-    cfLib.CFSafeRetain(proxyList.cast());
-    cfLib.CFSafeRetain(error.cast());
+  try {
+    final sendPort = client.address;
+    if (_postCObject(sendPort, cObject) > 0) {
+      cfLib.CFSafeRetain(proxyList.cast());
+      cfLib.CFSafeRetain(error.cast());
+    }
+  } finally {
+    malloc.free(cObject);
   }
 }
 

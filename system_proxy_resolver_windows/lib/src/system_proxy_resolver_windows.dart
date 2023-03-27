@@ -3,11 +3,13 @@ import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 import 'package:system_proxy_resolver_platform_interface/system_proxy_resolver_platform_interface.dart';
 import 'package:system_proxy_resolver_windows/src/libs.dart';
+import 'package:system_proxy_resolver_windows/src/system_proxy_resolver_windows_dart.dart'
+    if (dart.library.ui) 'package:system_proxy_resolver_windows/src/system_proxy_resolver_windows_flutter.dart';
 import 'package:system_proxy_resolver_windows/src/utils.dart';
 import 'package:system_proxy_resolver_windows/src/winhttp.g.dart';
 import 'package:win32/win32.dart';
 
-class SystemProxyResolverWindows extends SystemProxyResolverPlatform {
+class SystemProxyResolverWindows extends SystemProxyResolverBase {
   /// Registers this class as the default instance of
   /// [SystemProxyResolverPlatform].
   static void registerWith() {
@@ -18,13 +20,13 @@ class SystemProxyResolverWindows extends SystemProxyResolverPlatform {
   SystemProxySettings getSystemProxySettings() {
     return using((arena) {
       final proxyConfig = arena<WINHTTP_CURRENT_USER_IE_PROXY_CONFIG>()..addTo(arena);
-      if (!winHttpLib.WinHttpGetIEProxyConfigForCurrentUser(proxyConfig)) {
-        throw WindowsException(GetLastError());
+      if (winHttpLib.WinHttpGetIEProxyConfigForCurrentUser(proxyConfig) == FALSE) {
+        throw WindowsException(HRESULT_FROM_WIN32(GetLastError()));
       }
 
       var result = _emptySystemProxySettings();
       result = result.copyWith(
-        autoDiscoveryEnabled: proxyConfig.ref.fAutoDetect,
+        autoDiscoveryEnabled: proxyConfig.ref.fAutoDetect == TRUE,
         autoConfigUrl: proxyConfig.ref.lpszAutoConfigUrl.nullIfNullptr?.toDartString(),
       );
       result = _parseProxies(proxyConfig.ref.lpszProxy.nullIfNullptr?.toDartString() ?? "", result);

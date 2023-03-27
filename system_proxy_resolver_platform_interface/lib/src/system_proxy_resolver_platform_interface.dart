@@ -27,7 +27,7 @@ abstract class SystemProxyResolverPlatform extends PlatformInterface {
     throw UnimplementedError('getSystemProxySettings() has not been implemented.');
   }
 
-  Future<List<Proxy>> getProxyForUrl(String url) {
+  Future<List<Proxy>> getProxyForUrl(Uri url) {
     throw UnimplementedError('getProxyForUrl() has not been implemented.');
   }
 }
