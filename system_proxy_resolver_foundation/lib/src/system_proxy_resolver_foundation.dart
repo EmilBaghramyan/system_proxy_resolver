@@ -4,9 +4,8 @@ import 'dart:isolate';
 import 'package:ffi/ffi.dart';
 import 'package:system_proxy_resolver_foundation/src/core_foundation.g.dart';
 import 'package:system_proxy_resolver_foundation/src/libs.dart';
-import 'package:system_proxy_resolver_foundation/src/proxy_auto_configuration_stub.dart'
-    // if (dart.library.ui) 'package:system_proxy_resolver_foundation/src/proxy_auto_configuration_ui.dart'
-    if (dart.library.ffi) 'package:system_proxy_resolver_foundation/src/proxy_auto_configuration_ffi.dart';
+import 'package:system_proxy_resolver_foundation/src/proxy_auto_configuration_dart.dart'
+    if (dart.library.ui) 'package:system_proxy_resolver_foundation/src/proxy_auto_configuration_flutter.dart';
 import 'package:system_proxy_resolver_foundation/src/utils.dart';
 import 'package:system_proxy_resolver_platform_interface/system_proxy_resolver_platform_interface.dart';
 
@@ -23,7 +22,6 @@ class SystemProxyResolverFoundation extends SystemProxyResolverPlatform {
     try {
       final proxySettings = cfLib.CFNetworkCopySystemProxySettings();
       releaseList.add(proxySettings.cast());
-      // print(proxySettings.cast<CFType>().description);
 
       final autoDiscoveryEnable =
           proxySettings.getValue(cfLib.kCFNetworkProxiesProxyAutoDiscoveryEnable.cast()).asCFNumber()?.boolValue ??
@@ -179,7 +177,7 @@ class SystemProxyResolverFoundation extends SystemProxyResolverPlatform {
             proxyAutoConfigurationResultCallback,
             context,
           );
-          cfLib.CFRunLoopAddSource(proxyAutoConfigurationRunLoop, source, cfLib.kCFRunLoopDefaultMode);
+          cfLib.CFRunLoopAddSource(await proxyAutoConfigurationRunLoop, source, cfLib.kCFRunLoopDefaultMode);
 
           final callbackResult = await waitResult(callbackPort);
           final proxyList = callbackResult.ref.proxyList;

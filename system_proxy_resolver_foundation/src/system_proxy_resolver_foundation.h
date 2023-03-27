@@ -1,13 +1,17 @@
 #import <CoreFoundation/CoreFoundation.h>
+#import <CFNetwork/CFProxySupport.h>
+#include "dart_api_dl.h"
 
-#if _WIN32
-#define FFI_PLUGIN_EXPORT __declspec(dllexport)
-#else
 #define FFI_PLUGIN_EXPORT
-#endif
 
 typedef struct
 {
   CFArrayRef proxyList;
   CFErrorRef error;
 } CFProxyAutoConfigurationResult;
+
+FFI_PLUGIN_EXPORT void initializeProxyResolverRunLoop(Dart_PostCObject_Type postCObject, Dart_Port portId);
+
+FFI_PLUGIN_EXPORT CFProxyAutoConfigurationResultCallback proxyAutoConfigurationResultCallback;
+
+FFI_PLUGIN_EXPORT void freeCFProxyAutoConfigurationResult(CFProxyAutoConfigurationResult* result);

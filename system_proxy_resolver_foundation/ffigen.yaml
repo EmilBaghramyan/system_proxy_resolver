@@ -10,11 +10,11 @@ headers:
     - 'src/system_proxy_resolver_foundation.h'
     - 'src/dart-sdk/runtime/include/dart_native_api.h'
     - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFProxySupport.h'
+compiler-opts:
+  - '-Isrc/dart-sdk/runtime/include'
 exclude-all-by-default: true
 preamble: |
-  // ignore_for_file: always_specify_types
-  // ignore_for_file: camel_case_types
-  // ignore_for_file: non_constant_identifier_names
+  // ignore_for_file: type=lint
   export 'core_foundation_shims.dart';
 comments:
   style: any
@@ -56,6 +56,9 @@ functions:
     - CFNetworkCopySystemProxySettings
     - CFNetworkCopyProxiesForURL
     - CFNetworkExecuteProxyAutoConfigurationURL
+    # Helper
+    - initializeProxyResolverRunLoop
+    - freeCFProxyAutoConfigurationResult
 structs:
   include:
     - CFProxyAutoConfigurationResult
@@ -74,6 +77,7 @@ globals:
     - 'kCFProxy.*Key'
     - 'kCFProxyType.*'
     - kCFRunLoopDefaultMode
+    - proxyAutoConfigurationResultCallback
 typedefs:
   include:
     - CFProxyAutoConfigurationResultCallback

@@ -5,7 +5,7 @@ import 'package:ffi/ffi.dart';
 import 'package:system_proxy_resolver_foundation/src/core_foundation.g.dart';
 import 'package:system_proxy_resolver_foundation/src/libs.dart';
 
-Pointer<CFRunLoop> get proxyAutoConfigurationRunLoop => cfLib.CFRunLoopGetCurrent();
+Future<Pointer<CFRunLoop>> get proxyAutoConfigurationRunLoop => Future.value(cfLib.CFRunLoopGetCurrent());
 
 final CFProxyAutoConfigurationResultCallback proxyAutoConfigurationResultCallback =
     Pointer.fromFunction(_proxyAutoConfigurationResultCallback);

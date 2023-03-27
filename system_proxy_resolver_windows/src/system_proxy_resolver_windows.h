@@ -15,6 +15,6 @@ typedef struct {
 
 FFI_PLUGIN_EXPORT WINHTTP_STATUS_CALLBACK winHttpStatusCallback;
 
-FFI_PLUGIN_EXPORT HINTERNET initializeWinHttpSession(Dart_PostCObject_Type apiDlData);
+FFI_PLUGIN_EXPORT HINTERNET initializeWinHttpSession(Dart_PostCObject_Type postCObject);
 
 FFI_PLUGIN_EXPORT void freeWinHttpStatusCallbackResult(WinHttpStatusCallbackResult* result);
