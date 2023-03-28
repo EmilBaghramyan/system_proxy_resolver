@@ -29,11 +29,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^2.0.1
-
-dependency_overrides:
-  system_proxy_resolver_foundation:
-    path: ../system_proxy_resolver_foundation
-  system_proxy_resolver_platform_interface:
-    path: ../system_proxy_resolver_platform_interface
-  system_proxy_resolver_windows:
-    path: ../system_proxy_resolver_windows

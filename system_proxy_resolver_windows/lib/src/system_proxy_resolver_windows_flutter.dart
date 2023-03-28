@@ -4,6 +4,7 @@ import 'dart:isolate';
 
 import 'package:ffi/ffi.dart';
 import 'package:system_proxy_resolver_platform_interface/system_proxy_resolver_platform_interface.dart';
+import 'package:system_proxy_resolver_windows/src/common.dart';
 import 'package:system_proxy_resolver_windows/src/libs.dart';
 import 'package:system_proxy_resolver_windows/src/utils.dart';
 import 'package:system_proxy_resolver_windows/src/winhttp.g.dart';
@@ -25,9 +26,6 @@ class SystemProxyResolverBase extends SystemProxyResolverPlatform {
       if (winHttpLib.WinHttpGetIEProxyConfigForCurrentUser(ieProxyConfig) == FALSE) {
         throw WindowsException(HRESULT_FROM_WIN32(GetLastError()));
       }
-
-      var lpszProxy = ieProxyConfig.ref.lpszProxy;
-      var lpszProxyBypass = ieProxyConfig.ref.lpszProxyBypass;
 
       if (ieProxyConfig.ref.fAutoDetect == TRUE || ieProxyConfig.ref.lpszAutoConfigUrl != nullptr) {
         final autoProxyOptions = arena<WINHTTP_AUTOPROXY_OPTIONS>();
@@ -90,11 +88,11 @@ class SystemProxyResolverBase extends SystemProxyResolverPlatform {
             .then((value) => value!);
       }
 
-      print(lpszProxy.nullIfNullptr?.toDartString());
-      print(lpszProxyBypass.nullIfNullptr?.toDartString());
-
-      // TODO: implement getProxyForUrl
-      return super.getProxyForUrl(url);
+      return selectProxyForUrl(
+        url,
+        parseProxies(ieProxyConfig.ref.lpszProxy.nullIfNullptr?.toDartString() ?? ""),
+        parseProxyBypass(ieProxyConfig.ref.lpszProxyBypass.nullIfNullptr?.toDartString() ?? ""),
+      ).toList(growable: false);
     });
   }
 
