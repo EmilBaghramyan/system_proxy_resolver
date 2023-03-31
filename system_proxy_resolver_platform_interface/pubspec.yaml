@@ -2,7 +2,7 @@ name: system_proxy_resolver_platform_interface
 description: A starting point for Dart libraries or applications.
 homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver_platform_interface
 issue_tracker: https://github.com/ky1vstar/system_proxy_resolver/issues
-version: 0.0.1
+version: 1.0.0
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

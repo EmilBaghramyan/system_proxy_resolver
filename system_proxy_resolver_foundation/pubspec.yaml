@@ -15,17 +15,15 @@ flutter:
       ios:
         ffiPlugin: true
         dartPluginClass: SystemProxyResolverFoundation
-        sharedDarwinSource: true
       macos:
         ffiPlugin: true
         dartPluginClass: SystemProxyResolverFoundation
-        sharedDarwinSource: true
 
 dependencies:
   ffi: ^2.0.1
   flutter:
     sdk: flutter
-  system_proxy_resolver_platform_interface: ^0.0.1
+  system_proxy_resolver_platform_interface: ^1.0.0
 
 dev_dependencies:
   ffigen: ^7.2.9

@@ -22,7 +22,6 @@ class SystemProxyResolverBase extends SystemProxyResolverPlatform {
 
       var lpszProxy = ieProxyConfig.ref.lpszProxy;
       var lpszProxyBypass = ieProxyConfig.ref.lpszProxyBypass;
-      print(lpszProxy.nullIfNullptr?.toDartString());
 
       if (ieProxyConfig.ref.fAutoDetect == TRUE || ieProxyConfig.ref.lpszAutoConfigUrl != nullptr) {
         final autoProxyOptions = arena<WINHTTP_AUTOPROXY_OPTIONS>();

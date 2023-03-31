@@ -267,14 +267,14 @@ packages:
       path: "../../system_proxy_resolver_platform_interface"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0"
   system_proxy_resolver_windows:
     dependency: "direct overridden"
     description:
       path: "../../system_proxy_resolver_windows"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0"
   term_glyph:
     dependency: transitive
     description:

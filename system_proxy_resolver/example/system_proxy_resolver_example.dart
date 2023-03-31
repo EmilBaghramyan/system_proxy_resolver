@@ -6,7 +6,4 @@ void main() async {
   final resolver = SystemProxyResolver();
   print(resolver.getSystemProxySettings());
   print(await resolver.getProxyForUrl(Uri.parse("https://pub.dev")));
-  // final proxySettings = cfNetwork.CFNetworkCopySystemProxySettings();
-  // final description = cfNetwork.CFCopyDescription(proxySettings.cast());
-  // print(description.toDartString());
 }
