@@ -257,22 +257,22 @@ packages:
   system_proxy_resolver_foundation:
     dependency: "direct overridden"
     description:
-      path: "/Volumes/SHARED/src/system_proxy_resolver/system_proxy_resolver/example_flutter/../../system_proxy_resolver_foundation"
-      relative: false
+      path: "../../system_proxy_resolver_foundation"
+      relative: true
     source: path
     version: "0.0.1"
   system_proxy_resolver_platform_interface:
     dependency: "direct overridden"
     description:
-      path: "/Volumes/SHARED/src/system_proxy_resolver/system_proxy_resolver/example_flutter/../../system_proxy_resolver_platform_interface"
-      relative: false
+      path: "../../system_proxy_resolver_platform_interface"
+      relative: true
     source: path
     version: "0.0.1"
   system_proxy_resolver_windows:
     dependency: "direct overridden"
     description:
-      path: "/Volumes/SHARED/src/system_proxy_resolver/system_proxy_resolver/example_flutter/../../system_proxy_resolver_windows"
-      relative: false
+      path: "../../system_proxy_resolver_windows"
+      relative: true
     source: path
     version: "0.0.1"
   term_glyph:

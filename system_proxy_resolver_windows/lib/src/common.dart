@@ -1,7 +1,13 @@
 import 'package:system_proxy_resolver_platform_interface/system_proxy_resolver_platform_interface.dart';
 import 'package:system_proxy_resolver_windows/src/proxy_bypass.dart';
 
-Iterable<Proxy> parseProxies(String proxies) sync* {
+Iterable<Proxy> parseProxies(String input) sync* {
+  var proxies = input;
+  final doubleSlashIndex = proxies.indexOf("//");
+  if (doubleSlashIndex > -1) {
+    proxies = proxies.substring(doubleSlashIndex + 2);
+  }
+
   if (proxies.isEmpty) return;
 
   if (!proxies.contains("=")) {
@@ -10,37 +16,37 @@ Iterable<Proxy> parseProxies(String proxies) sync* {
     yield proxy.copyWith(type: ProxyType.http);
     yield proxy.copyWith(type: ProxyType.https);
     yield proxy.copyWith(type: ProxyType.ftp);
-  }
+  } else {
+    final semicolonTokens = proxies.split(";");
+    for (final semicolonToken in semicolonTokens) {
+      final equalsTokens = semicolonToken.split("=");
+      var i = 0;
+      var proxyType = ProxyType.direct;
 
-  final semicolonTokens = proxies.split(";");
-  for (final semicolonToken in semicolonTokens) {
-    final equalsTokens = semicolonToken.split("=");
-    var i = 0;
-    var proxyType = ProxyType.direct;
-
-    for (final equalsToken in equalsTokens) {
-      switch (i++) {
-        case 0:
-          switch (equalsToken) {
-            case "http":
-              proxyType = ProxyType.http;
-              break;
-            case "https":
-              proxyType = ProxyType.https;
-              break;
-            case "ftp":
-              proxyType = ProxyType.ftp;
-              break;
-            case "socks":
-              proxyType = ProxyType.socks;
-              break;
-          }
-          break;
-        case 1:
-          if (proxyType != ProxyType.direct) {
-            yield parseProxy(equalsToken, proxyType);
-          }
-          break;
+      for (final equalsToken in equalsTokens) {
+        switch (i++) {
+          case 0:
+            switch (equalsToken) {
+              case "http":
+                proxyType = ProxyType.http;
+                break;
+              case "https":
+                proxyType = ProxyType.https;
+                break;
+              case "ftp":
+                proxyType = ProxyType.ftp;
+                break;
+              case "socks":
+                proxyType = ProxyType.socks;
+                break;
+            }
+            break;
+          case 1:
+            if (proxyType != ProxyType.direct) {
+              yield parseProxy(equalsToken, proxyType);
+            }
+            break;
+        }
       }
     }
   }
