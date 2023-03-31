@@ -74,18 +74,23 @@ class SystemProxyResolverBase extends SystemProxyResolverPlatform {
           throw WindowsException(HRESULT_FROM_WIN32(getProxyStatus));
         }
 
-        return callbackPort
-            .cast<int>()
-            .map((address) {
-              return using((arena) {
-                final result = Pointer<WinHttpStatusCallbackResult>.fromAddress(address);
-                arena.onReleaseAll(() => helperLib.freeWinHttpStatusCallbackResult(result));
-                return _handleCallbackResult(result, arena);
-              });
-            })
-            .where((event) => event != null)
-            .first
-            .then((value) => value!);
+        try {
+          return await callbackPort
+              .cast<int>()
+              .map((address) {
+                return using((arena) {
+                  final result = Pointer<WinHttpStatusCallbackResult>.fromAddress(address);
+                  arena.onReleaseAll(() => helperLib.freeWinHttpStatusCallbackResult(result));
+                  return _handleCallbackResult(result, arena);
+                });
+              })
+              .where((event) => event != null)
+              .first
+              .then((value) => value!);
+        } on Object catch (_) {
+          // throw only if auto config url has failed
+          if (ieProxyConfig.ref.lpszAutoConfigUrl != nullptr) rethrow;
+        }
       }
 
       return selectProxyForUrl(
