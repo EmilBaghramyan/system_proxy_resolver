@@ -1,5 +1,5 @@
 name: system_proxy_resolver_platform_interface
-description: A starting point for Dart libraries or applications.
+description: A common platform interface for the system_proxy_resolver plugin.
 homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver_platform_interface
 issue_tracker: https://github.com/ky1vstar/system_proxy_resolver/issues
 version: 1.0.0

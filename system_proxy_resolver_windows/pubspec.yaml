@@ -10,7 +10,7 @@ environment:
 
 flutter:
   plugin:
-    implements: system_proxy_resolver
+    implements: system_proxy_resolver_federated
     platforms:
       windows:
         ffiPlugin: true

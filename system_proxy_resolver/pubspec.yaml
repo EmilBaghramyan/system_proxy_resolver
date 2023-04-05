@@ -1,31 +1,21 @@
 name: system_proxy_resolver
-description: A Dart Package/Flutter Plugin to get system proxy settings with support of PAC scripts.
+description: A Dart Package to get system proxy settings with support of PAC scripts.
 homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver
 issue_tracker: https://github.com/ky1vstar/system_proxy_resolver/issues
 version: 1.0.0
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=2.11.0"
 
-flutter:
-  plugin:
-    platforms:
-      ios:
-        default_package: system_proxy_resolver_foundation
-      macos:
-        default_package: system_proxy_resolver_foundation
-      windows:
-        default_package: system_proxy_resolver_windows
+platforms:
+  ios:
+  macos:
+  windows:
 
 dependencies:
-  flutter:
-    sdk: flutter
-  system_proxy_resolver_foundation: ^1.0.0
+  system_proxy_resolver_federated: ^1.0.0
   system_proxy_resolver_platform_interface: ^1.0.0
-  system_proxy_resolver_windows: ^1.0.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   lint: ^2.0.1
+  test: ^1.24.1

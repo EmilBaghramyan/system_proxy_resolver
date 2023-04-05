@@ -253,14 +253,21 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0"
+  system_proxy_resolver_federated:
+    dependency: "direct overridden"
+    description:
+      path: "../../system_proxy_resolver_federated"
+      relative: true
+    source: path
+    version: "1.0.0"
   system_proxy_resolver_foundation:
     dependency: "direct overridden"
     description:
       path: "../../system_proxy_resolver_foundation"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0"
   system_proxy_resolver_platform_interface:
     dependency: "direct overridden"
     description:

@@ -2,7 +2,7 @@ name: system_proxy_resolver_foundation
 description: iOS and macOS implementation of the system_proxy_resolver plugin.
 homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver_foundation
 issue_tracker: https://github.com/ky1vstar/system_proxy_resolver/issues
-version: 0.0.1
+version: 1.0.0
 
 environment:
   sdk: '>=2.13.0 <3.0.0'
@@ -10,7 +10,7 @@ environment:
 
 flutter:
   plugin:
-    implements: system_proxy_resolver
+    implements: system_proxy_resolver_federated
     platforms:
       ios:
         ffiPlugin: true

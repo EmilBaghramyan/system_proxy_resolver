@@ -1,6 +1,4 @@
-import 'package:system_proxy_resolver/src/ensure_implemented_stub.dart'
-    if (dart.library.ui) 'package:system_proxy_resolver/src/ensure_implemented_ui.dart'
-    if (dart.library.ffi) 'package:system_proxy_resolver/src/ensure_implemented_ffi.dart';
+import 'package:system_proxy_resolver_federated/system_proxy_resolver_federated.dart';
 import 'package:system_proxy_resolver_platform_interface/system_proxy_resolver_platform_interface.dart';
 
 export 'package:system_proxy_resolver_platform_interface/system_proxy_resolver_platform_interface.dart'
