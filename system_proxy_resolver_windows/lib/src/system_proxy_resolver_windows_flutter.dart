@@ -8,6 +8,7 @@ import 'package:system_proxy_resolver_windows/src/common.dart';
 import 'package:system_proxy_resolver_windows/src/libs.dart';
 import 'package:system_proxy_resolver_windows/src/utils.dart';
 import 'package:system_proxy_resolver_windows/src/winhttp.g.dart';
+import 'package:system_proxy_resolver_windows/src/winhttp.g.dart' as spr;
 import 'package:win32/win32.dart';
 
 class SystemProxyResolverBase extends SystemProxyResolverPlatform {
@@ -70,7 +71,7 @@ class SystemProxyResolverBase extends SystemProxyResolverPlatform {
           autoProxyOptions,
           callbackPort.sendPort.nativePort,
         );
-        if (getProxyStatus != ERROR_IO_PENDING) {
+        if (getProxyStatus != spr.ERROR_IO_PENDING) {
           throw WindowsException(HRESULT_FROM_WIN32(getProxyStatus));
         }
 

@@ -7,7 +7,7 @@ import 'package:win32/win32.dart';
 // ignore: non_constant_identifier_names
 int GlobalSafeFree(Pointer hMem) {
   if (hMem != nullptr) {
-    return GlobalFree(hMem.address);
+    return GlobalFree(hMem).address;
   } else {
     return nullptr.address;
   }
