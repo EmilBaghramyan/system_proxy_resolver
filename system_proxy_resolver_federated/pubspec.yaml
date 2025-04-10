@@ -1,8 +1,7 @@
 name: system_proxy_resolver_federated
 description: Federated implementation of the system_proxy_resolver plugin.
-homepage: https://github.com/ky1vstar/tree/master/system_proxy_resolver/system_proxy_resolver_federated
-issue_tracker: https://github.com/ky1vstar/system_proxy_resolver/issues
-version: 1.0.0
+publish_to: none
+version: 1.0.1
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
@@ -21,9 +20,18 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  system_proxy_resolver_foundation: ^1.0.0
-  system_proxy_resolver_platform_interface: ^1.0.0
-  system_proxy_resolver_windows: ^1.0.0
+  system_proxy_resolver_foundation:
+    git:
+      url: https://github.com/EmilBaghramyan/system_proxy_resolver.git
+      path: system_proxy_resolver_foundation
+  system_proxy_resolver_platform_interface:
+    git:
+      url: https://github.com/EmilBaghramyan/system_proxy_resolver.git
+      path: system_proxy_resolver_platform_interface
+  system_proxy_resolver_windows:
+    git:
+      url: https://github.com/EmilBaghramyan/system_proxy_resolver.git
+      path: system_proxy_resolver_windows
 
 dev_dependencies:
   flutter_test:
